@@ -210,7 +210,7 @@ class SearchableBehavior extends ModelBehavior {
 		if (strpos($fieldName, '.') === false) {
 			$fieldName = $model->alias . '.' . $fieldName;
 		}
-		if (!empty($data[$field['name']]) && $data[$field['name']] != '0') {
+		if (!empty($data) && is_array($data) && array_key_exists($field['name'], $data)) {
 			$conditions[$fieldName . " LIKE"] = "%" . $data[$field['name']] . "%";
 		}
 		return $conditions;
@@ -249,7 +249,8 @@ class SearchableBehavior extends ModelBehavior {
  * @return array of conditions modified by this method.
  */
 	protected function _addCondQuery(Model $model, &$conditions, $data, $field) {
-		if ((method_exists($model, $field['method']) || $this->__checkBehaviorMethods($model, $field['method'])) && !empty($data[$field['name']])) {
+		if ((method_exists($model, $field['method']) || $this->__checkBehaviorMethods($model, $field['method'])) &&
+			(!empty($data) && is_array($data) && array_key_exists($field['name'], $data))) {
 			$conditionsAdd = $model->{$field['method']}($data);
 			$conditions = array_merge($conditions, (array)$conditionsAdd);
 		}
