@@ -216,7 +216,8 @@ class PrgComponent extends Object {
 
 			if ($valid) {
 				$passed = $this->controller->params['pass'];
-				$params2 = $this->exclude($this->controller->{$modelName}->data, array('_Token'));
+				$params2 = array_diff_key($this->controller->data, array('_Token' => 1));
+				//$params2 = $this->exclude($this->controller->{$modelName}->data, array('_Token'));
 				$params = array();
 				foreach ($params2 as $model => $arrayConditions) {
 					foreach ($arrayConditions as $field => $value) {
