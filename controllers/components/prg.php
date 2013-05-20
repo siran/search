@@ -20,7 +20,7 @@ class PrgComponent extends Object {
 /**
  * Actions used to fetch the post data
  *
- * Maps the action that takes the post data and processes it by using this 
+ * Maps the action that takes the post data and processes it by using this
  * component and maps it to another action that is accessed by a redirect which
  * has the post data attached as get data now
  *
@@ -51,7 +51,7 @@ class PrgComponent extends Object {
  * Poplulates controller->data with allowed values from the named/passed get params
  *
  * Fields in $controller::$presetVars that have a type of 'lookup' the foreignKey value will be inserted
- * 
+ *
  * 1) 'lookup'
  *    Is used for autocomplete selectors
  *    For autocomplete we have hidden field with value and autocomplete text box
@@ -86,7 +86,7 @@ class PrgComponent extends Object {
 					$data[$model][$field['formField']] = $result[$searchModel][$field['modelField']];
 				}
 			}
-	
+
 			if ($field['type'] == 'checkbox') {
 				if (isset($args[$field['field']])) {
 					$values = split('\|', $args[$field['field']]);
@@ -107,7 +107,7 @@ class PrgComponent extends Object {
 
 /**
  * Restores form params for checkboxs and other url encoded params
- * 
+ *
  * @param array
  */
 	public function serializeParams(&$data) {
@@ -152,9 +152,9 @@ class PrgComponent extends Object {
 	}
 
 /**
- * Exclude 
- * 
- * Removes key/values from $array based on $exclude 
+ * Exclude
+ *
+ * Removes key/values from $array based on $exclude
 
  * @param array Array of data to be filtered
  * @param array Array of keys to exclude from other $array
@@ -172,7 +172,7 @@ class PrgComponent extends Object {
 
 /**
  * Common search method
- * 
+ *
  * Handles processes common to all PRG forms
  *
  * - Handles validation of post data
@@ -184,7 +184,7 @@ class PrgComponent extends Object {
  * @param array $options Optional parameters:
  *  - string form Name of the form involved in the prg
  *  - string action The action to redirect to. Defaults to the current action
- *  - mixed modelMethod If not false a string that is the model method that will be used to process the data 
+ *  - mixed modelMethod If not false a string that is the model method that will be used to process the data
  * @return void
  */
 	public function commonProcess($modelName = null, $options = array()) {
